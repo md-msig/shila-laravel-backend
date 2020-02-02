@@ -57,55 +57,7 @@ class PostController extends Controller {
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(CreatePostRequest $request) {
-        $input = $request->all();
-        $input['post_featuredimage'] = Post::handleFile($request);
-        $post = new Post();
-        $posttype = Posttype::find($input['posttype_id']);
-        $addedPost = Post::addPost($input, $post, $posttype);
-        $addedPost->categories()->sync($input['category_list']);
-        flash('Post created sucessfully!');
-        return redirect('dashboard/admin/post');
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id) {
-        
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id) {
-        $post = Post::find($id);
-        $categories = Category::pluck('categories.name', 'categories.id');
-        return view('backend.admin.post.edit')->with('post', $post)->with('post_featuredimage', $post->post_featuredimage)->with('categories', $categories);
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(CreatePostRequest $request, $id) {
-        $input = $request->all();
-        $post = Post::find($id);
-        $input['post_featuredimage'] = Post::updateHandleFile($request, $post);
-        $post->update($input);
-        $post->categories()->sync($input['category_list']);
-        flash('Post updated sucessfully!');
-        return redirect('dashboard/admin/post');
-    }
+    
 
     /**
      * Remove the specified resource from storage.
