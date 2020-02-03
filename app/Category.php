@@ -16,21 +16,6 @@ class Category extends Model {
         return $this->belongsToMany('App\Post');
     }
 
-    /**
-     * Moves uploaded file and returns the new filenam
-     * @param  Symfony\Component\HttpFoundation\File\UploadedFile $file upladed file
-     * @return string            new name returned
-     */
-    public function handleFile($request) {
-        if ($request->hasFile('featuredimage')) {
-            $fileName = time() . '_' . $request->featuredimage->getClientOriginalName();
-            $request->featuredimage->storeAs('public', $fileName);
-        } else {
-            $fileName = '';
-        }
-        return $fileName;
-    }
-
     /*
      * Update uploaded file
      */
@@ -56,6 +41,21 @@ class Category extends Model {
         $category->featuredimage = $input['featuredimage'];
         $category->save();
         return TRUE;
+    }
+
+    /**
+     * Moves uploaded file and returns the new filenam
+     * @param  Symfony\Component\HttpFoundation\File\UploadedFile $file upladed file
+     * @return string            new name returned
+     */
+    public function handleFile($request) {
+        if ($request->hasFile('featuredimage')) {
+            $fileName = time() . '_' . $request->featuredimage->getClientOriginalName();
+            $request->featuredimage->storeAs('public', $fileName);
+        } else {
+            $fileName = '';
+        }
+        return $fileName;
     }
 
 }
