@@ -38,5 +38,13 @@ class CartController extends Controller {
          return redirect('cart');
     }
 
+    /*
+     * Remove cart 
+     */
+
+    public function getRemoveCartItem($id) {
+        Cart::remove($id);
+         return redirect('cart');
+    }
 
 }
