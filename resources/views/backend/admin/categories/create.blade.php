@@ -1,12 +1,12 @@
 @extends('main')
 @section('content')
-<!-- Content Header (Category header) -->
 <section class="content-header">
     <h1>
         Create New Category
         <small>category details</small>
     </h1>
 </section>
+<!-- Content Header (Category header) -->
 
 
 <!-- Main content -->

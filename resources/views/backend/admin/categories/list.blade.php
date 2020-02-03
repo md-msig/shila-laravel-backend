@@ -9,9 +9,16 @@
 
 <!-- Main content -->
 <section class="content">
-
     @include('common.message')
     <div class="box">
+        <div class="box-header">
+            <h3 class="box-title">available system categories</h3>
+            <div class="box-tools">
+                <a href="{!!url('dashboard/admin/categories/create')!!}" class="btn btn-sm btn-success">
+                    <i class="fa fa-plus"></i>
+                    Add Category                </a>
+            </div>
+        </div>
         <div class="box-header">
             <h3 class="box-title">available system categories</h3>
             <div class="box-tools">
@@ -57,6 +64,5 @@
             @endif
         </div>
     </div>
-
 </section><!-- /.content -->
 @endsection
