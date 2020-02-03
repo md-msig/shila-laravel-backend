@@ -54,17 +54,6 @@ class CategoryController extends Controller {
     }
 
     /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id) {
-        $category = Category::find($id);
-        return view('backend.admin.categories.edit')->with('category', $category)->with('featuredimage', $category->featuredimage);
-    }
-
-    /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
@@ -78,6 +67,17 @@ class CategoryController extends Controller {
         $category->update($input);
         flash('Category updated sucessfully!');
         return redirect('dashboard/admin/categories');
+    }
+
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function edit($id) {
+        $category = Category::find($id);
+        return view('backend.admin.categories.edit')->with('category', $category)->with('featuredimage', $category->featuredimage);
     }
 
     /**
